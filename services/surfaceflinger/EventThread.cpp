@@ -231,7 +231,9 @@ Vector<sp<EventThread::Connection> > EventThread::waitForEventLocked(
             }
         }
 
-        if (!timestamp) {
+        // find out connections waiting for events
+        size_t count = mDisplayEventConnections.size();
+        if (!timestamp && count) {
             // no vsync event, see if there are some other event
             eventPending = !mPendingEvents.isEmpty();
             if (eventPending) {
@@ -241,8 +243,6 @@ Vector<sp<EventThread::Connection> > EventThread::waitForEventLocked(
             }
         }
 
-        // find out connections waiting for events
-        size_t count = mDisplayEventConnections.size();
         for (size_t i = 0; i < count;) {
             sp<Connection> connection(mDisplayEventConnections[i].promote());
             if (connection != nullptr) {
