@@ -26,6 +26,7 @@
 
 #include <bfqio/bfqio.h>
 #include <log/log.h>
+#include <bfqio/bfqio.h>
 #include <utils/String8.h>
 #include <utils/Thread.h>
 #include <utils/Trace.h>

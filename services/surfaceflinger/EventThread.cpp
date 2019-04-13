@@ -24,6 +24,7 @@
 
 #include <bfqio/bfqio.h>
 #include <cutils/compiler.h>
+#include <bfqio/bfqio.h>
 #include <cutils/sched_policy.h>
 
 #include <gui/DisplayEventReceiver.h>
@@ -73,7 +74,6 @@ EventThread::EventThread(VSyncSource* src, ResyncWithRateLimitCallback resyncWit
     }
 
     set_sched_policy(tid, SP_FOREGROUND);
-
     android_set_rt_ioprio(tid, 1);
 }
 
